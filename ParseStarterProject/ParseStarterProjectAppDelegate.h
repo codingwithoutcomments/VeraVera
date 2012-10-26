@@ -1,11 +1,10 @@
-@class ParseStarterProjectViewController;
+@class EventsTableViewController;
 
 @interface ParseStarterProjectAppDelegate : NSObject <UIApplicationDelegate> {
 
 }
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-
-@property (nonatomic, strong) IBOutlet ParseStarterProjectViewController *viewController;
+@property (nonatomic, strong) UITableViewController* viewController;
 
 @end

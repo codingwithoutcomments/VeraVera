@@ -1,6 +1,6 @@
 #import <Parse/Parse.h>
 #import "ParseStarterProjectAppDelegate.h"
-#import "ParseStarterProjectViewController.h"
+#import "EventsTableViewController.h"
 
 @implementation ParseStarterProjectAppDelegate
 
@@ -22,7 +22,7 @@
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
     // Override point for customization after application launch.
-     
+    self.viewController = [[EventsTableViewController alloc] initWithNibName:@"EventsTableViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
