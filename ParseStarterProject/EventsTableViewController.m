@@ -8,6 +8,7 @@
 
 #import "EventsTableViewController.h"
 #import "VeraVeraApiClient.h"
+#import "Event.h"
 #import <AFNetworking/AFnetworking.h>
 #import <AFHTTPClient.h>
 #import <AFJSONRequestOperation.h>
@@ -35,7 +36,13 @@
     
     [[VeraVeraApiClient sharedInstance] getPath:@"/api/events/" parameters:nil success:^(AFHTTPRequestOperation *operation, id response){
         
-                                            NSLog(@"Resopnse %@", response);
+                                          NSMutableArray * events = [NSMutableArray array];
+                                          for(id eventDictionary in [response objectForKey:@"events"]){
+                                              Event * event = [[Event alloc] initWithDictionary:eventDictionary];
+                                              [events addObject:event];
+                                          }
+                                            self.events = events;
+                                            [self.tableView reloadData];
         
                                           }
                                           failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -79,6 +86,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    Event * event = [self.events objectAtIndex:indexPath.row];
+    cell.textLabel.text = event.name;
+    NSString * url = event.imageLink;
+    [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
     
     return cell;
 }
