@@ -7,6 +7,7 @@
 //
 
 #import "EventsTableViewController.h"
+#import "VeraVeraApiClient.h"
 #import <AFNetworking/AFnetworking.h>
 #import <AFHTTPClient.h>
 #import <AFJSONRequestOperation.h>
@@ -32,17 +33,16 @@
 {
     [super viewDidLoad];
     
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/api/events/"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation
-                                         JSONRequestOperationWithRequest:request
-                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json) {
-                                             self.events = [json objectForKey:@"events"];
-                                             [self.tableView reloadData];
-                                         } failure:nil];
-    
-    [operation start];
+    [[VeraVeraApiClient sharedInstance] getPath:@"/api/events/" parameters:nil success:^(AFHTTPRequestOperation *operation, id response){
+        
+                                            NSLog(@"Resopnse %@", response);
+        
+                                          }
+                                          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                                              
+                                              NSLog(@"Errors Fetching Events");
+                                              
+                                          }];
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -79,12 +79,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    NSDictionary * event = [self.events objectAtIndex:indexPath.row];
-    cell.textLabel.text = [event objectForKey:@"name"];
-    
-    NSString * url = [event objectForKey:@"imageLink"];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
     
     return cell;
 }

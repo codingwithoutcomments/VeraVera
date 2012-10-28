@@ -33,6 +33,7 @@
 		86BD344B1639D14C00D27E9F /* EventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD34491639D14C00D27E9F /* EventsTableViewController.m */; };
 		86BD344C1639D14C00D27E9F /* EventsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD344A1639D14C00D27E9F /* EventsTableViewController.xib */; };
 		86BD3456163AD63300D27E9F /* VeraVera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86BD3455163AD63300D27E9F /* VeraVera.jpg */; };
+		86BD345A163B24C300D27E9F /* VeraVeraApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD3459163B24C200D27E9F /* VeraVeraApiClient.m */; };
 		C4C51B571613CE0800959FDC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B541613CE0800959FDC /* Default.png */; };
 		C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B551613CE0800959FDC /* Default-568h@2x.png */; };
 		C4C51B591613CE0800959FDC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B561613CE0800959FDC /* Default@2x.png */; };
@@ -73,6 +74,8 @@
 		86BD34491639D14C00D27E9F /* EventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsTableViewController.m; sourceTree = "<group>"; };
 		86BD344A1639D14C00D27E9F /* EventsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsTableViewController.xib; sourceTree = "<group>"; };
 		86BD3455163AD63300D27E9F /* VeraVera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VeraVera.jpg; sourceTree = "<group>"; };
+		86BD3458163B24C200D27E9F /* VeraVeraApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeraVeraApiClient.h; sourceTree = "<group>"; };
+		86BD3459163B24C200D27E9F /* VeraVeraApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeraVeraApiClient.m; sourceTree = "<group>"; };
 		C4C51B541613CE0800959FDC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4C51B551613CE0800959FDC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4C51B561613CE0800959FDC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				86BD34481639D14C00D27E9F /* EventsTableViewController.h */,
 				86BD34491639D14C00D27E9F /* EventsTableViewController.m */,
 				86BD344A1639D14C00D27E9F /* EventsTableViewController.xib */,
+				86BD3458163B24C200D27E9F /* VeraVeraApiClient.h */,
+				86BD3459163B24C200D27E9F /* VeraVeraApiClient.m */,
 			);
 			name = VeraVera;
 			path = ParseStarterProject;
@@ -274,6 +279,7 @@
 				09ABC08213A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m in Sources */,
 				09ABC08813A1D52E009C3FCF /* ParseStarterProjectViewController.m in Sources */,
 				86BD344B1639D14C00D27E9F /* EventsTableViewController.m in Sources */,
+				86BD345A163B24C300D27E9F /* VeraVeraApiClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
