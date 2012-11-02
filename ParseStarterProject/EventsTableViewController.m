@@ -9,6 +9,7 @@
 #import "EventsTableViewController.h"
 #import "VeraVeraApiClient.h"
 #import "Event.h"
+#import "EventTableViewCell.h"
 #import <AFNetworking/AFnetworking.h>
 #import <AFHTTPClient.h>
 #import <AFJSONRequestOperation.h>
@@ -82,14 +83,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        NSArray * loadTopLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTableViewCell" owner:nil options:nil];
+        for (id currentObject in loadTopLevelObjects){
+            if([currentObject isKindOfClass:[EventTableViewCell class]]){
+                cell = (EventTableViewCell * ) currentObject;
+            }
+        }
     }
     
     Event * event = [self.events objectAtIndex:indexPath.row];
-    cell.textLabel.text = event.name;
+    cell.title.text = event.name;
     NSString * url = event.imageLink;
+    url = [url stringByReplacingOccurrencesOfString:@"/_/" withString:@"/126s/"];
     [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
     
     return cell;

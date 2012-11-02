@@ -21,9 +21,12 @@
     
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
+    EventsTableViewController * eventsTableViewController = [[EventsTableViewController alloc] initWithNibName:@"EventsTableViewController" bundle:nil];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:eventsTableViewController];
+    
     // Override point for customization after application launch.
-    self.viewController = [[EventsTableViewController alloc] initWithNibName:@"EventsTableViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
