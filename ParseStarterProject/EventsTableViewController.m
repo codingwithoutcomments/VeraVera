@@ -58,9 +58,6 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,13 +96,23 @@
     Event * event = [self.events objectAtIndex:indexPath.row];
     cell.title.text = event.name;
     
-    [cell populateHeader:event.name maxWidth:500];
+    int maxLabelWidth = 280;
+    if(![self isDefaultImage:event.imageLink]){
+        [cell populateImage:event.imageLink];
+        maxLabelWidth = 182;
+    }
+
+    [cell populateHeader:event.name maxWidth:maxLabelWidth];
     
-    NSString * url = event.imageLink;
-    url = [url stringByReplacingOccurrencesOfString:@"/_/" withString:@"/126s/"];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
     
     return cell;
+}
+
+-(Boolean)isDefaultImage:(NSString *)imageURL{
+    
+    if([imageURL isEqualToString:@"http://placehold.it/126/&text=VeraVera"]) return true;
+    
+    return false;
 }
 
 /*

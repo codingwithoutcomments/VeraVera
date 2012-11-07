@@ -28,6 +28,13 @@
     // Configure the view for the selected state
 }
 
+-(void)populateImage:(NSString *)imageURL{
+    
+    NSString * url = [imageURL stringByReplacingOccurrencesOfString:@"/_/" withString:@"/126s/"];
+    [self.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
+    
+}
+
 -(void)populateHeader:(NSString *)header maxWidth:(int)maxWidth{
     
     CGSize maximumLabelSize = CGSizeMake(maxWidth,9999);
@@ -36,6 +43,7 @@
     //adjust the label the the new height.
     CGRect newFrame = self.title.frame;
     newFrame.size.height = expectedLabelSize.height;
+    newFrame.size.width = expectedLabelSize.width;
     self.title.frame = newFrame;
     [self.title sizeToFit];
 }

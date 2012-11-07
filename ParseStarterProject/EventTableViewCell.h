@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFnetworking.h>
+#import <AFHTTPClient.h>
 
 @interface EventTableViewCell : UITableViewCell
 
@@ -14,5 +16,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView * imageView;
 
 -(void)populateHeader:(NSString *)header maxWidth:(int) maxWidth;
+-(void)populateImage:(NSString *)imageURL;
+-(Boolean)isImageDefault;
 
 @end

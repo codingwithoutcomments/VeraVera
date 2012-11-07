@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) NSArray* events;
 
+-(Boolean)isDefaultImage:(NSString*)imageURL;
+
 @end
 
 
