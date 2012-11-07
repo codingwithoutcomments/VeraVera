@@ -104,6 +104,8 @@
 
     [cell populateHeader:event.name maxWidth:maxLabelWidth];
     
+    [cell addGradient];
+    
     
     return cell;
 }

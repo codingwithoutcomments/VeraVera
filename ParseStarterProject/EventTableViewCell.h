@@ -18,5 +18,6 @@
 -(void)populateHeader:(NSString *)header maxWidth:(int) maxWidth;
 -(void)populateImage:(NSString *)imageURL;
 -(Boolean)isImageDefault;
+-(void)addGradient;
 
 @end
