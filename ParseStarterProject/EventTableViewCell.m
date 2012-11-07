@@ -17,15 +17,27 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
     }
     return self;
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)populateHeader:(NSString *)header maxWidth:(int)maxWidth{
+    
+    CGSize maximumLabelSize = CGSizeMake(maxWidth,9999);
+    CGSize expectedLabelSize = [header sizeWithFont:self.title.font constrainedToSize:maximumLabelSize lineBreakMode:self.title.lineBreakMode];
+    
+    //adjust the label the the new height.
+    CGRect newFrame = self.title.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    self.title.frame = newFrame;
+    [self.title sizeToFit];
 }
 
 @end

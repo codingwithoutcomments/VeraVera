@@ -13,4 +13,6 @@
 @property (nonatomic, strong) IBOutlet UILabel * title;
 @property (nonatomic, strong) IBOutlet UIImageView * imageView;
 
+-(void)populateHeader:(NSString *)header maxWidth:(int) maxWidth;
+
 @end

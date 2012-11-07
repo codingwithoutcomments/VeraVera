@@ -22,11 +22,12 @@
 
 @synthesize events = _events;
 
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -34,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"Events";
     
     [[VeraVeraApiClient sharedInstance] getPath:@"/api/events/" parameters:nil success:^(AFHTTPRequestOperation *operation, id response){
         
@@ -85,7 +88,7 @@
     static NSString *CellIdentifier = @"Cell";
     EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        NSArray * loadTopLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTableViewCell" owner:nil options:nil];
+        NSArray * loadTopLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTableViewCell" owner:self options:nil];
         for (id currentObject in loadTopLevelObjects){
             if([currentObject isKindOfClass:[EventTableViewCell class]]){
                 cell = (EventTableViewCell * ) currentObject;
@@ -95,6 +98,9 @@
     
     Event * event = [self.events objectAtIndex:indexPath.row];
     cell.title.text = event.name;
+    
+    [cell populateHeader:event.name maxWidth:500];
+    
     NSString * url = event.imageLink;
     url = [url stringByReplacingOccurrencesOfString:@"/_/" withString:@"/126s/"];
     [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"VeraVera.jpg"]];
